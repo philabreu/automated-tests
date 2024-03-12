@@ -1,9 +1,9 @@
 package com.erudio.service;
 
 
-import com.erudio.exceptions.ResourceNotFoundException;
+import com.erudio.exception.ResourceNotFoundException;
 import com.erudio.model.Person;
-import com.erudio.repositories.PersonRepository;
+import com.erudio.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
