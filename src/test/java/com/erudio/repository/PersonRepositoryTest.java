@@ -1,7 +1,6 @@
-package com.erudio;
+package com.erudio.repository;
 
 import com.erudio.model.Person;
-import com.erudio.repository.PersonRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
