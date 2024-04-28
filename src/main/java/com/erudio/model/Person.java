@@ -24,7 +24,7 @@ public class Person implements Serializable {
     private String address;
 
     @Column(nullable = false, length = 6)
-    private String gender;
+    private String sex;
 
     @Column(nullable = false, length = 100)
     private String email;
@@ -32,20 +32,20 @@ public class Person implements Serializable {
     public Person() {
     }
 
-    public Person(String firstName, String lastName, String email, String address, String gender) {
+    public Person(String firstName, String lastName, String email, String address, String sex) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.gender = gender;
+        this.sex = sex;
         this.email = email;
     }
 
-    public Person(Long id, String firstName, String lastName, String email, String address, String gender) {
+    public Person(Long id, String firstName, String lastName, String email, String address, String sex) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.gender = gender;
+        this.sex = sex;
         this.email = email;
     }
 
@@ -81,12 +81,12 @@ public class Person implements Serializable {
         this.address = address;
     }
 
-    public String getGender() {
-        return gender;
+    public String getSex() {
+        return sex;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public String getEmail() {
@@ -104,7 +104,7 @@ public class Person implements Serializable {
         result = prime * result + ((address == null) ? 0 : address.hashCode());
         result = prime * result + ((email == null) ? 0 : email.hashCode());
         result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-        result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+        result = prime * result + ((sex == null) ? 0 : sex.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
         return result;
@@ -134,10 +134,10 @@ public class Person implements Serializable {
                 return false;
         } else if (!firstName.equals(other.firstName))
             return false;
-        if (gender == null) {
-            if (other.gender != null)
+        if (sex == null) {
+            if (other.sex != null)
                 return false;
-        } else if (!gender.equals(other.gender))
+        } else if (!sex.equals(other.sex))
             return false;
         if (id == null) {
             if (other.id != null)

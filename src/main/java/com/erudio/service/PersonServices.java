@@ -14,60 +14,60 @@ import java.util.logging.Logger;
 @Service
 public class PersonServices {
 
-	private Logger logger = Logger.getLogger(PersonServices.class.getName());
+    private Logger logger = Logger.getLogger(PersonServices.class.getName());
 
-	@Autowired
-	PersonRepository repository;
+    @Autowired
+    PersonRepository repository;
 
-	public List<Person> findAll() {
+    public List<Person> findAll() {
 
-		logger.info("Finding all people!");
+        logger.info("Finding all people!");
 
-		return repository.findAll();
-	}
+        return repository.findAll();
+    }
 
-	public Person findById(Long id) {
+    public Person findById(Long id) {
 
-		logger.info("Finding one person!");
+        logger.info("Finding one person!");
 
-		return repository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
-	}
+        return repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+    }
 
-	public Person create(Person person) {
+    public Person create(Person person) {
 
-		logger.info("Creating one person!");
+        logger.info("Creating one person!");
 
-		Optional<Person> savedPerson = repository.findByEmail(person.getEmail());
+        Optional<Person> savedPerson = repository.findByEmail(person.getEmail());
 
-		if (savedPerson.isPresent()){
-			throw new ResourceNotFoundException("Person already exist with given email.");
-		}
+        if (savedPerson.isPresent()) {
+            throw new ResourceNotFoundException("Person already exist with given email.");
+        }
 
-		return repository.save(person);
-	}
+        return repository.save(person);
+    }
 
-	public Person update(Person person) {
+    public Person update(Person person) {
 
-		logger.info("Updating one person!");
+        logger.info("Updating one person!");
 
-		var entity = repository.findById(person.getId())
-				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+        var entity = repository.findById(person.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
 
-		entity.setFirstName(person.getFirstName());
-		entity.setLastName(person.getLastName());
-		entity.setAddress(person.getAddress());
-		entity.setGender(person.getGender());
+        entity.setFirstName(person.getFirstName());
+        entity.setLastName(person.getLastName());
+        entity.setAddress(person.getAddress());
+        entity.setSex(person.getSex());
 
-		return repository.save(person);
-	}
+        return repository.save(person);
+    }
 
-	public void delete(Long id) {
+    public void delete(Long id) {
 
-		logger.info("Deleting one person!");
+        logger.info("Deleting one person!");
 
-		var entity = repository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
-		repository.delete(entity);
-	}
+        var entity = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+        repository.delete(entity);
+    }
 }
